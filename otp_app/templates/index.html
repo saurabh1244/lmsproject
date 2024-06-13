@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+   
+          Username : {{user.username}}  <br/>
+          First Name : {{user.first_name}}  <br/>
+          Last Name : {{user.last_name}} <br/>
+          email : {{user.email}} <br/>
+
+    
+
+{% endif %}
+
+
+<form method="post" action="{% url 'search' %}" >
+  {% csrf_token %}
+  <div class="mb-3">
+    <input type="text" type="submit" placeholder="Search Projects / Frameworks / languages " name="searched" class="form-control" >
+  </div>
+ 
+ 
+  <!-- <button  class="btn btn-primary">Submit</button> -->
+</form>
+
+
+
+  
+
+
+
+
+
+
+<div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+
+{% for product in products %}
+
+<div>
+
+{% if product.is_sale %}
+      
+<div class="card" style="width: 18rem;">
+  <img src="{{product.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{product.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+ 
+    <li class="list-group-item">{{product.category}}</li>
+  </ul>
+  <div class="card-body">
+    <h6><a href="{% url 'product' product.id %}" class="card-link">Buy Now :</a> <strike>{{product.price}}</strike> {{product.sale_price}}</h6>
+  
+  </div>
+</div>
+
+{% else %}
+<div class="card" style="width: 18rem;">
+  <img src="{{product.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{product.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+ 
+    <li class="list-group-item">{{product.category}}</li>
+  </ul>
+  <div class="card-body">
+    <h6><a href="{% url 'product' product.id %}" class="card-link">Buy Now :</a> {{product.price}}</h6>
+  
+  </div>
+</div>
+  
+{% endif %}
+  
+
+</div>
+  {% endfor %}
+</div>
+</div>
+
+
+
+
+
+
+    
+
+    {% endblock content %}

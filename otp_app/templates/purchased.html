@@ -1,0 +1,61 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>Purchased Project : </h1>
+    
+
+
+{% if orders %}
+  
+
+  
+
+  {% for order in orders %}
+
+  
+
+<div class="card mb-3" style="max-width: 800px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{order.product.image.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ order.product.name }}</h5>
+        <p class="card-text">{{ order.product.description }}</p>
+        
+        <ul class="list-group list-group-flush">
+   
+          <li class="list-group-item">{{order.product.category}}</li>
+        </ul>
+        
+        
+          
+          
+          <div class="card-body">
+            <h6><a class='btn btn-secondary' href="{{order.product.file.url}}" download class="card-link">Download Now </a> </h6>
+            
+          </div>
+        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<h1> Nothing to show :  </h1>
+
+{% endif %}
+
+
+
+
+{% endblock content %}
+    
