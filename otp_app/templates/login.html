@@ -2,22 +2,26 @@
 
 
 {% block content %}
+<div class="form-con">
 
-<form action=""  method="POST">
-    {% csrf_token %}
+    <form action=""  method="POST" class="form-css">
+        {% csrf_token %}
 
-    <h1>Login Form : </h1>
+    <h3>Login Form</h3><div class="hrs"></div><br>
+<div class="input-con">
+    <label class="form-label" style="font-weight: bold;">E-mail</label><br>
+    <input type="text" name="username" placeholder="Enter email-address"><br>
+    <label class="form-label" style="font-weight: bold; margin-top: 30px;">Password</label><br>
+    <input type="text" name="password" placeholder="Enter Password">
+</div>
 
-    <input type="text" name="username" placeholder="Enter email-address">
-
-   <input type="text" name="password" placeholder="Enter Password">
-
-    <button type="submit"> Login</button>
-
+   <button type="submit" class="btn btn-success" style=" margin:10px 0 20px 0;"> Login</button>
    
-    <a href="{% url 'register_page' %}"><button type="submit" class="btn btn-success">Register</button> </a>
-    <p>Don't have an account </p>
+   <div>
+       <p  style="display: inline-block;">Don't have an account? &nbsp;</p><a href="{% url 'register_page' %}" style="text-decoration: none;">Register</a>
+    </div>
 </form>
+</div>
     
 
 

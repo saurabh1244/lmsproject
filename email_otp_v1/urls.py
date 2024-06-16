@@ -5,12 +5,12 @@ from django.contrib.auth.views import  PasswordResetView , PasswordResetDoneView
 from django.conf import settings
 from django.conf.urls.static import static
 
-from api.views import send_dictionary
+# from api.views import send_dictionary
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("otp_app.urls")),
-    path("api/", include("api.urls")),
+    # path("api/", include("api.urls")),
 
     
 

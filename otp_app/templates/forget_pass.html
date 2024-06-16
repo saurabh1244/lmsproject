@@ -2,23 +2,22 @@
 
 
 {% block content %}
+<div class="form-con">
 
-<form method="post">
+</div>
+<form method="post" class="form-css">
     {% csrf_token %}
 
     <h1>Forget Password - </h1> <br />
+<div class="hrs"></div>
 
 
-
-
-    <div>
+    <div class="input-con">
         <label> Regsitered Email Address</label>
         <input type="email" name="otp_email" placeholder="Enter email Address">
-
-
     </div>
 
-    <button type="submit">Send Otp</button>
+    <button type="submit" class="btn btn-success">Send Otp</button>
 
 
 
